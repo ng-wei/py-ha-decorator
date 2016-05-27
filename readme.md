@@ -6,6 +6,9 @@
 -------
 py-ha-decorator当前版本0.1.0
 
+### Install Package
+--------
+	$ pip install py-ha-decorator
 
 ### Install Dependencies
 --------
@@ -21,7 +24,7 @@ py-ha-decorator当前版本0.1.0
 demo1.py:
 	
 	import time
-	import ha_decorator import HaDecorator
+	import pyhadecorator.ha_decorator import HaDecorator
 	
 	# specified zk hosts
 	@HaDecorator("localhost:2181")
@@ -35,7 +38,7 @@ demo1.py:
 demo2.py:
 
 	import time
-	import ha_decorator import HaDecorator
+	import pyhadecorator.ha_decorator import HaDecorator
 	
 	# specified zk hosts
 	@HaDecorator("localhost:2181")
