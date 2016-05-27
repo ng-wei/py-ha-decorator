@@ -11,15 +11,19 @@ logging.basicConfig(
 class HaDecorator(object):
     ELECTION_PATH = "/ha-zookeeper/election"
 
-    def __init__(self, hosts):
+    def __init__(self, hosts, path=None):
         self.hosts = hosts
+        if not path:
+            self.path = self.ELECTION_PATH
+        else:
+            self.path = path
         self.zk = None
 
     def __call__(self, f):
         def wrapped(*args, **kwargs):
             self.zk = KazooClient(hosts=self.hosts)
             self.zk.start()
-            election = self.zk.Election(self.ELECTION_PATH)
+            election = self.zk.Election(self.path)
             election.run(lambda: f(*args, **kwargs))
 
         return wrapped
